@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>关于我</title>
-  <meta name="description" content="实验室饮水机核心管理员">
+  <title>Markdown工具集</title>
+  <meta name="description" content="Markdown简介">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="关于我">
-  <meta name="twitter:description" content="实验室饮水机核心管理员">
+  <meta name="twitter:title" content="Markdown工具集">
+  <meta name="twitter:description" content="Markdown简介">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="关于我">
-  <meta property="og:description" content="实验室饮水机核心管理员">
+  <meta property="og:title" content="Markdown工具集">
+  <meta property="og:description" content="Markdown简介">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://astroromance.github.io/about/">
+  <link rel="canonical" href="http://astroromance.github.io/2017/05/md/">
   <link rel="alternate" type="application/rss+xml" title="Qing" href="http://astroromance.github.io/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -167,19 +167,101 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
+    <h1 class="post-title">Markdown工具集</h1>
     <div class="post-meta">
-      <time datetime="" itemprop="datePublished" class="post-meta__date date"></time>
-      <span class="post-meta__tags tags"></span>
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2017-05-25 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-05-25</time>  
+         
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
     </div>
-    <h1 class="post-title">关于我</h1>
   </header>
 
   <section class="post">
-    <p>实验室饮水机核心管理员</p>
+    <h2 id="markdown">Markdown简介</h2>
+
+<blockquote>
+  <p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— <a href="https://zh.wikipedia.org/wiki/Markdown">维基百科</a></p>
+</blockquote>
+
+<p>正如您在阅读的这份文档，它使用简单的符号标识不同的标题，将某些文字标记为<strong>粗体</strong>或者<em>斜体</em>，创建一个<a href="http://www.example.com">链接</a>或一个脚注<sup id="fnref:demo"><a href="#fn:demo" class="footnote">1</a></sup>。下面列举了几个高级功能，更多语法请按<code class="highlighter-rouge">Ctrl + /</code>查看帮助。</p>
+
+<h3 id="section">代码块</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@requires_authorization</span>
+<span class="k">def</span> <span class="nf">somefunc</span><span class="p">(</span><span class="n">param1</span><span class="o">=</span><span class="s">''</span><span class="p">,</span> <span class="n">param2</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="s">'''A docstring'''</span>
+    <span class="k">if</span> <span class="n">param1</span> <span class="o">&gt;</span> <span class="n">param2</span><span class="p">:</span> <span class="c"># interesting</span>
+        <span class="k">print</span> <span class="s">'Greater'</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">param2</span> <span class="o">-</span> <span class="n">param1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">None</span>
+<span class="k">class</span> <span class="nc">SomeClass</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">message</span> <span class="o">=</span> <span class="s">'''interpreter
+... prompt'''</span></code></pre></figure>
+
+<h3 id="latex-">LaTeX 公式</h3>
+
+<p>可以创建行内公式，例如 $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$。或者块级公式：</p>
+
+<script type="math/tex; mode=display">x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}</script>
+
+<h3 id="section-1">表格</h3>
+<p>| Item      |    Value | Qty  |
+| :——– | ——–:| :–: |
+| Computer  | 1600 USD |  5   |
+| Phone     |   12 USD |  12  |
+| Pipe      |    1 USD | 234  |</p>
+
+<h3 id="section-2">流程图</h3>
+<p>```flow
+st=&gt;start: Start
+e=&gt;end
+op=&gt;operation: My Operation
+cond=&gt;condition: Yes or No?</p>
+
+<p>st-&gt;op-&gt;cond
+cond(yes)-&gt;e
+cond(no)-&gt;op
+```</p>
+
+<p>以及时序图:</p>
+
+<p><code class="highlighter-rouge">sequence
+Alice-&gt;Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob--&gt;Alice: I am good thanks!
+</code></p>
+
+<blockquote>
+  <p><strong>提示：</strong>想了解更多，请查看<strong>流程图</strong>[语法][3]以及<strong>时序图</strong>[语法][4]。</p>
+</blockquote>
+
+<h3 id="section-3">复选框</h3>
+
+<p>使用 <code class="highlighter-rouge">- [ ]</code> 和 <code class="highlighter-rouge">- [x]</code> 语法可以创建复选框，实现 todo-list 等功能。例如：</p>
+
+<ul>
+  <li>[x] 已完成事项</li>
+  <li>[ ] 待办事项1</li>
+  <li>[ ] 待办事项2</li>
+</ul>
+
+<blockquote>
+  <p><strong>注意：</strong>目前支持尚不完全，在印象笔记中勾选复选框是无效、不能同步的，所以必须在<strong>马克飞象</strong>中修改 Markdown 原文才可生效。下个版本将会全面支持。</p>
+</blockquote>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:demo">
+      <p>这是一个示例脚注。请查阅 <a href="https://github.com/fletcher/MultiMarkdown/wiki/MultiMarkdown-Syntax-Guide#footnotes">MultiMarkdown 文档</a> 关于脚注的说明。 <strong>限制：</strong> 印象笔记的笔记内容使用 [ENML][5] 格式，基于 HTML，但是不支持某些标签和属性，例如id，这就导致<code class="highlighter-rouge">脚注</code>和<code class="highlighter-rouge">TOC</code>无法正常点击。 <a href="#fnref:demo" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
 
   </section>
 </article>
+
 
             <section class="footer">
     <footer>

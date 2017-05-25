@@ -5,17 +5,17 @@ description: 实验室饮水机核心管理员
 # 头像里面的标题
 avatarTitle: fuchen
 # 头像里面的描述
-avatarDesc: Deep Learning / Machine Learning
-url: "http://baixin.io"
+avatarDesc: scut
+url: "http://astroromance.github.io"
 
 # Comment
 comment:
     # disqus: leopard
-    duoshuo: leopard 
+    # duoshuo: leopard 
 
 # Social
 social:
-    # weibo: 5366874726 
+    # weibo: fabulouskilljoy 
     github: astroromance
     # twitter: 
     mail: chenyqch@foxmail.com
@@ -67,5 +67,3 @@ nav:
 gems: [jekyll-paginate]
 paginate: 20
 paginate_path: "page/:num/"
-
-

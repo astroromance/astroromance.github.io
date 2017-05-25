@@ -3,11 +3,102 @@
   <channel>
     <title>Qing</title>
     <description>实验室饮水机核心管理员</description>
-    <link>http://baixin.io/</link>
-    <atom:link href="http://baixin.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 25 May 2017 09:15:33 +0800</pubDate>
-    <lastBuildDate>Thu, 25 May 2017 09:15:33 +0800</lastBuildDate>
+    <link>http://astroromance.github.io/</link>
+    <atom:link href="http://astroromance.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 25 May 2017 11:25:21 +0800</pubDate>
+    <lastBuildDate>Thu, 25 May 2017 11:25:21 +0800</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
+    
+      <item>
+        <title>Markdown工具集</title>
+        <description>&lt;h2 id=&quot;markdown&quot;&gt;Markdown简介&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— &lt;a href=&quot;https://zh.wikipedia.org/wiki/Markdown&quot;&gt;维基百科&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;正如您在阅读的这份文档，它使用简单的符号标识不同的标题，将某些文字标记为&lt;strong&gt;粗体&lt;/strong&gt;或者&lt;em&gt;斜体&lt;/em&gt;，创建一个&lt;a href=&quot;http://www.example.com&quot;&gt;链接&lt;/a&gt;或一个脚注&lt;sup id=&quot;fnref:demo&quot;&gt;&lt;a href=&quot;#fn:demo&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;。下面列举了几个高级功能，更多语法请按&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + /&lt;/code&gt;查看帮助。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;代码块&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@requires_authorization&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;somefunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&#39;&#39;&#39;A docstring&#39;&#39;&#39;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# interesting&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;Greater&#39;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&#39;&#39;interpreter
+... prompt&#39;&#39;&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;latex-&quot;&gt;LaTeX 公式&lt;/h3&gt;
+
+&lt;p&gt;可以创建行内公式，例如 $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$。或者块级公式：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}&lt;/script&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;表格&lt;/h3&gt;
+&lt;p&gt;| Item      |    Value | Qty  |
+| :——– | ——–:| :–: |
+| Computer  | 1600 USD |  5   |
+| Phone     |   12 USD |  12  |
+| Pipe      |    1 USD | 234  |&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;流程图&lt;/h3&gt;
+&lt;p&gt;```flow
+st=&amp;gt;start: Start
+e=&amp;gt;end
+op=&amp;gt;operation: My Operation
+cond=&amp;gt;condition: Yes or No?&lt;/p&gt;
+
+&lt;p&gt;st-&amp;gt;op-&amp;gt;cond
+cond(yes)-&amp;gt;e
+cond(no)-&amp;gt;op
+```&lt;/p&gt;
+
+&lt;p&gt;以及时序图:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sequence
+Alice-&amp;gt;Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob--&amp;gt;Alice: I am good thanks!
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;提示：&lt;/strong&gt;想了解更多，请查看&lt;strong&gt;流程图&lt;/strong&gt;[语法][3]以及&lt;strong&gt;时序图&lt;/strong&gt;[语法][4]。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;复选框&lt;/h3&gt;
+
+&lt;p&gt;使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;- [ ]&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;- [x]&lt;/code&gt; 语法可以创建复选框，实现 todo-list 等功能。例如：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[x] 已完成事项&lt;/li&gt;
+  &lt;li&gt;[ ] 待办事项1&lt;/li&gt;
+  &lt;li&gt;[ ] 待办事项2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;目前支持尚不完全，在印象笔记中勾选复选框是无效、不能同步的，所以必须在&lt;strong&gt;马克飞象&lt;/strong&gt;中修改 Markdown 原文才可生效。下个版本将会全面支持。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:demo&quot;&gt;
+      &lt;p&gt;这是一个示例脚注。请查阅 &lt;a href=&quot;https://github.com/fletcher/MultiMarkdown/wiki/MultiMarkdown-Syntax-Guide#footnotes&quot;&gt;MultiMarkdown 文档&lt;/a&gt; 关于脚注的说明。 &lt;strong&gt;限制：&lt;/strong&gt; 印象笔记的笔记内容使用 [ENML][5] 格式，基于 HTML，但是不支持某些标签和属性，例如id，这就导致&lt;code class=&quot;highlighter-rouge&quot;&gt;脚注&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;TOC&lt;/code&gt;无法正常点击。 &lt;a href=&quot;#fnref:demo&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 25 May 2017 00:00:00 +0800</pubDate>
+        <link>http://astroromance.github.io/2017/05/md/</link>
+        <guid isPermaLink="true">http://astroromance.github.io/2017/05/md/</guid>
+        
+        <category>工具</category>
+        
+        
+      </item>
     
   </channel>
 </rss>
