@@ -8,17 +8,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>文章</title>
-  <meta name="description" content="实验室饮水机核心管理员">
+  <title>protobuf 实践</title>
+  <meta name="description" content="首先编写test.proto如下package test;message Info{    required int32 id   = 1;    repeated int32 opt	= 2;    repeated string msg	= 3;}然后咧，执行protoc -I=. --cpp_out=. t...">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="文章">
-  <meta name="twitter:description" content="实验室饮水机核心管理员">
+  <meta name="twitter:title" content="protobuf 实践">
+  <meta name="twitter:description" content="首先编写test.proto如下package test;message Info{    required int32 id   = 1;    repeated int32 opt	= 2;    repeated string msg	= 3;}然后咧，执行protoc -I=. --cpp_out=. t...">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="文章">
-  <meta property="og:description" content="实验室饮水机核心管理员">
+  <meta property="og:title" content="protobuf 实践">
+  <meta property="og:description" content="首先编写test.proto如下package test;message Info{    required int32 id   = 1;    repeated int32 opt	= 2;    repeated string msg	= 3;}然后咧，执行protoc -I=. --cpp_out=. t...">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://chenyqk.github.io/archive/">
+  <link rel="canonical" href="http://chenyqk.github.io/2018/06/protobuf/">
   <link rel="alternate" type="application/rss+xml" title="Qing" href="http://chenyqk.github.io/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -169,124 +169,82 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
+    <h1 class="post-title">protobuf 实践</h1>
     <div class="post-meta">
-      <time datetime="" itemprop="datePublished" class="post-meta__date date"></time>
-      <span class="post-meta__tags tags"></span>
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2018-06-17 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-06-17</time>  
+         
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
     </div>
-    <h1 class="post-title">文章</h1>
   </header>
 
   <section class="post">
-    
+    <p>首先编写test.proto如下</p>
+
+<figure class="highlight"><pre><code class="language-protobuf" data-lang="protobuf">package test;
+message Info
+{
+    required int32 id   = 1;
+    repeated int32 opt	= 2;
+    repeated string msg	= 3;
+}</code></pre></figure>
+
+<p>然后咧，执行</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">protoc -I<span class="o">=</span>. --cpp_out<span class="o">=</span>. test.proto</code></pre></figure>
+
+<p>如无意外，会生成test.pb.h和test.pb.cc</p>
+
+<p>然后我们编写一个test.cpp来测试一下新生成的类</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="cp">#include"test.pb.h"
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="n">dump</span><span class="p">(</span><span class="k">const</span> <span class="n">test</span><span class="o">::</span><span class="n">Info</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">){</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="n">opt</span> <span class="o">:</span> <span class="n">a</span><span class="p">.</span><span class="n">opt</span><span class="p">()){</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">opt</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="n">msg</span> <span class="o">:</span> <span class="n">a</span><span class="p">.</span><span class="n">msg</span><span class="p">()){</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">msg</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">test</span><span class="o">::</span><span class="n">Info</span> <span class="n">info</span><span class="p">;</span>
+    <span class="n">info</span><span class="p">.</span><span class="n">set_id</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+    <span class="n">info</span><span class="p">.</span><span class="n">add_opt</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+    <span class="n">info</span><span class="p">.</span><span class="n">add_opt</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+    <span class="n">info</span><span class="p">.</span><span class="n">add_opt</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="n">info</span><span class="p">.</span><span class="n">add_msg</span><span class="p">(</span><span class="s">"POST"</span><span class="p">);</span>
+    <span class="n">info</span><span class="p">.</span><span class="n">add_msg</span><span class="p">(</span><span class="s">"GET"</span><span class="p">);</span>
+    <span class="n">info</span><span class="p">.</span><span class="n">add_msg</span><span class="p">(</span><span class="s">"REQUEST"</span><span class="p">);</span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">info</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>输出结果为：</p>
+
+<p>123</p>
+
+<p>404</p>
+
+<p>200</p>
+
+<p>500</p>
+
+<p>POST</p>
+
+<p>GET</p>
+
+<p>REQUEST</p>
 
 
-<div class="page card">
-
-
-
-  
-    
-    
-    
-    
-  
-    
-    
-    
-      <div class="hat_title">
-        <h3>2018</h3>
-      </div>
-      <div class="post_list">
-      <ul>
-      
-    
-  
-    <li>
-      <span>
-        2018-06-17
-      </span>
-       &raquo; 
-      <a href="/2018/06/protobuf/">protobuf 实践</a>
-    </li>
- 
-    
-          
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li>
-      <span>
-        2018-06-17
-      </span>
-       &raquo; 
-      <a href="/2018/06/cmake/">cmake 实践</a>
-    </li>
- 
-    
-          
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li>
-      <span>
-        2018-06-17
-      </span>
-       &raquo; 
-      <a href="/2018/06/docker/">ubuntu 下 docker 实践</a>
-    </li>
- 
-    
-      
-        </ul>
-         </div>         
-         
-        <div class="hat_title">
-         <h3> 2017</h3>
-        </div>
-        <div class="post_list">
-        <ul>
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li>
-      <span>
-        2017-05-25
-      </span>
-       &raquo; 
-      <a href="/2017/05/md/">markdown 简介</a>
-    </li>
- 
-    
-      </ul>
-      
-    
-  
-
-</div>
-</div>
   </section>
 </article>
+
 
             <section class="footer">
     <footer>

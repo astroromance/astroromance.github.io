@@ -26,8 +26,8 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://astroromance.github.io/">
-  <link rel="alternate" type="application/rss+xml" title="Qing" href="http://astroromance.github.io/feed.xml">
+  <link rel="canonical" href="http://chenyqk.github.io/">
+  <link rel="alternate" type="application/rss+xml" title="Qing" href="http://chenyqk.github.io/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
 
@@ -172,7 +172,70 @@
   <ol class="post-list">
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/05/md/" title="访问 Markdown简介">Markdown简介</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2018/06/protobuf/" title="访问 protobuf 实践">protobuf 实践</a></h2>
+      <p class="excerpt">首先编写test.proto如下package test;message Info{    required int32 id   = 1;    repeated int32 opt	= 2;    repeated string msg	= 3;}然后咧，执行protoc -I=. --cpp_out=. test.proto如无意外，会生成test.pb.h和test.pb.cc然后我们编写一个test.cpp来测试一下新生成的类#include"test.pb.h"#include...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-06-17 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-06-17</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">protobuf</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/06/protobuf/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/06/cmake/" title="访问 cmake 实践">cmake 实践</a></h2>
+      <p class="excerpt">cmake 可以通过简单的语句描述来输出定制的makefile文件安装cmakecmake的安装巨简单sudo apt-get install cmake使用cmake首先呢，在项目的目录下新建一个文本文件，并命名为CMakeList.txt内容大概如下project(test)cmake_minimum_required(VERSION 2.8)set(SRC_LIST test.cpp test.pb.cc)link_libraries(protobuf)add_definitions...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-06-17 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-06-17</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">cmake</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/06/cmake/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/06/docker/" title="访问 ubuntu 下 docker 实践">ubuntu 下 docker 实践</a></h2>
+      <p class="excerpt">docker 安装https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository跟着教程一步步走就行了，没踩什么坑更换国内镜像为了永久性保留更改，您可以修改（新建） /etc/docker/daemon.json 文件并添加上 registry-mirrors 键值。{    "registry-mirrors": ["https://hub-mirror.c.163.com"]}最后...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-06-17 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-06-17</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">docker</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/06/docker/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/05/md/" title="访问 markdown 简介">markdown 简介</a></h2>
       <p class="excerpt">  Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— 维基百科正如您在阅读的这份文档，它使用简单的符号标识不同的标题，将某些文字标记为粗体或者斜体，创建一个链接或一个脚注1。下面列举了几个高级功能，更多语法请按Ctrl + /查看帮助。代码块@requires_authorizationdef somefunc(param1='', param2=0):    '''A docstring'''    if ...&hellip;</p>
       <div class="post-list__meta">        
         <time datetime="2017-05-25 00:00:00 +0800" class="post-list__meta--date date">
@@ -183,7 +246,7 @@
         </div>
         <a href="/tags">
           <div class = "post-list-icon-mate">
-            <span class="post-list__meta--tags-right">工具</span>
+            <span class="post-list__meta--tags-right">markdown</span>
           </div>
           <div class = "post-list-small-mate">
           <a class="btn-border-small" href=/2017/05/md/>阅读全文 » </a>
@@ -221,7 +284,7 @@
           
           <!-- Github -->
           <li class="navigation__item_social">
-            <a href="https://github.com/astroromance" title="@astroromance 的 Github" target="_blank">
+            <a href="https://github.com/chenyqk" title="@chenyqk 的 Github" target="_blank">
               <i class='social fa fa-github fa-2x'></i>
               <span class="label">Github</span>
             </a>
@@ -257,7 +320,7 @@
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; Qing 2017 Theme by <a href="http://baixin.io/">leopardpan</a> |
+            Copyright &copy; Qing 2018 Theme by <a href="http://baixin.io/">leopardpan</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"

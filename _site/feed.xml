@@ -3,14 +3,199 @@
   <channel>
     <title>Qing</title>
     <description>实验室饮水机核心管理员</description>
-    <link>http://astroromance.github.io/</link>
-    <atom:link href="http://astroromance.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 25 May 2017 11:36:29 +0800</pubDate>
-    <lastBuildDate>Thu, 25 May 2017 11:36:29 +0800</lastBuildDate>
+    <link>http://chenyqk.github.io/</link>
+    <atom:link href="http://chenyqk.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 17 Jun 2018 15:38:19 +0800</pubDate>
+    <lastBuildDate>Sun, 17 Jun 2018 15:38:19 +0800</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
     
       <item>
-        <title>Markdown简介</title>
+        <title>protobuf 实践</title>
+        <description>&lt;p&gt;首先编写test.proto如下&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-protobuf&quot; data-lang=&quot;protobuf&quot;&gt;package test;
+message Info
+{
+    required int32 id   = 1;
+    repeated int32 opt	= 2;
+    repeated string msg	= 3;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;然后咧，执行&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;protoc -I&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;. --cpp_out&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;. test.proto&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;如无意外，会生成test.pb.h和test.pb.cc&lt;/p&gt;
+
+&lt;p&gt;然后我们编写一个test.cpp来测试一下新生成的类&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include&quot;test.pb.h&quot;
+#include&amp;lt;iostream&amp;gt;
+#include&amp;lt;string&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dump&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;opt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;opt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Info&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_opt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_opt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_opt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;POST&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GET&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;REQUEST&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dump&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;输出结果为：&lt;/p&gt;
+
+&lt;p&gt;123&lt;/p&gt;
+
+&lt;p&gt;404&lt;/p&gt;
+
+&lt;p&gt;200&lt;/p&gt;
+
+&lt;p&gt;500&lt;/p&gt;
+
+&lt;p&gt;POST&lt;/p&gt;
+
+&lt;p&gt;GET&lt;/p&gt;
+
+&lt;p&gt;REQUEST&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Jun 2018 00:00:00 +0800</pubDate>
+        <link>http://chenyqk.github.io/2018/06/protobuf/</link>
+        <guid isPermaLink="true">http://chenyqk.github.io/2018/06/protobuf/</guid>
+        
+        <category>protobuf</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>cmake 实践</title>
+        <description>&lt;p&gt;cmake 可以通过简单的语句描述来输出定制的makefile文件&lt;/p&gt;
+
+&lt;h3 id=&quot;cmake&quot;&gt;安装cmake&lt;/h3&gt;
+
+&lt;p&gt;cmake的安装巨简单&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo apt-get install cmake&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;cmake-1&quot;&gt;使用cmake&lt;/h3&gt;
+
+&lt;p&gt;首先呢，在项目的目录下新建一个文本文件，并命名为CMakeList.txt
+内容大概如下&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cmake&quot; data-lang=&quot;cmake&quot;&gt;project(test)
+cmake_minimum_required(VERSION 2.8)
+set(SRC_LIST test.cpp test.pb.cc)
+link_libraries(protobuf)
+add_definitions(-std=c++11)
+add_executable(test $(SRC_LIST))&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;具体可以去查文档
+然后呢，在项目目录下执行&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cmake .&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;然后就成功了，会生成一个Makefile文件&lt;/p&gt;
+
+&lt;p&gt;然后你就可以愉快地make了~&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Jun 2018 00:00:00 +0800</pubDate>
+        <link>http://chenyqk.github.io/2018/06/cmake/</link>
+        <guid isPermaLink="true">http://chenyqk.github.io/2018/06/cmake/</guid>
+        
+        <category>cmake</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>ubuntu 下 docker 实践</title>
+        <description>&lt;h3 id=&quot;docker-&quot;&gt;docker 安装&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository&quot;&gt;https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;跟着教程一步步走就行了，没踩什么坑&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;更换国内镜像&lt;/h3&gt;
+
+&lt;p&gt;为了永久性保留更改，您可以修改（新建） /etc/docker/daemon.json 文件并添加上 registry-mirrors 键值。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;registry-mirrors&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://hub-mirror.c.163.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;最后记得重启服务：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;service docker restart&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;常用语句收集&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 搜索镜像&lt;/span&gt;
+docker search &amp;lt;image&amp;gt; &lt;span class=&quot;c&quot;&gt;# 在docker index中搜索image&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 下载镜像&lt;/span&gt;
+docker pull &amp;lt;image&amp;gt;  &lt;span class=&quot;c&quot;&gt;# 从docker registry server 中下拉image&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 查看镜像 &lt;/span&gt;
+docker images： &lt;span class=&quot;c&quot;&gt;# 列出images&lt;/span&gt;
+docker images -a &lt;span class=&quot;c&quot;&gt;# 列出所有的images（包含历史）&lt;/span&gt;
+docker rmi  &amp;lt;image ID&amp;gt;： &lt;span class=&quot;c&quot;&gt;# 删除一个或多个image&lt;/span&gt;
+docker image rm  &amp;lt;image&amp;gt;： &lt;span class=&quot;c&quot;&gt;# 删除一个或多个image&amp;lt;image&amp;gt;可以是镜像ID，镜像名&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 使用镜像创建容器&lt;/span&gt;
+docker run -i -t sauloal/ubuntu14.04
+docker run -i -t sauloal/ubuntu14.04 /bin/bash &lt;span class=&quot;c&quot;&gt;# 创建一个容器，让其中运行 bash 应用，退出后容器关闭&lt;/span&gt;
+docker run -itd --name centos_aways --restart&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;always centos &lt;span class=&quot;c&quot;&gt;#创建一个名称centos_aways的容器，自动重启&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# --restart参数：always始终重启；on-failure退出状态非0时重启；默认为，no不重启&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 查看容器&lt;/span&gt;
+docker ps ：列出当前所有正在运行的container
+docker ps -l ：列出最近一次启动的container
+docker ps -a ：列出所有的container（包含历史，即运行过的container）
+docker ps -q ：列出最近一次运行的container ID
+&lt;span class=&quot;c&quot;&gt;# 再次启动容器&lt;/span&gt;
+docker start/stop/restart &amp;lt;container&amp;gt; &lt;span class=&quot;c&quot;&gt;#：开启/停止/重启container&lt;/span&gt;
+docker start &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;container_id] &lt;span class=&quot;c&quot;&gt;#：再次运行某个container （包括历史container）&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#进入正在运行的docker容器&lt;/span&gt;
+docker &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; -it &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;container_id] /bin/bash
+docker run -i -t -p &amp;lt;host_port:contain_port&amp;gt; &lt;span class=&quot;c&quot;&gt;#：映射 HOST 端口到容器，方便外部访问容器内服务，host_port 可以省略，省略表示把 container_port 映射到一个动态端口。&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 删除容器&lt;/span&gt;
+docker rm &amp;lt;container...&amp;gt; &lt;span class=&quot;c&quot;&gt;#：删除一个或多个container&lt;/span&gt;
+docker rm &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;docker ps -a -q&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#：删除所有的container&lt;/span&gt;
+docker ps -a -q | xargs docker rm &lt;span class=&quot;c&quot;&gt;#：同上, 删除所有的container&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;dockerfile&quot;&gt;利用Dockerfile定制镜像&lt;/h3&gt;
+
+&lt;p&gt;DockerFile其实是一个脚本，可以用于定制自己需要的镜像&lt;/p&gt;
+
+&lt;p&gt;一个小例子：&lt;a href=&quot;https://github.com/BVLC/caffe/blob/master/docker/cpu/Dockerfile&quot;&gt;https://github.com/BVLC/caffe/blob/master/docker/cpu/Dockerfile&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;完成DockerFile编写之后，在Dockerfile文件夹下执行以下指令即可完成操作：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;docker build -t &amp;lt;image_name&amp;gt; .&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;在线文档一份：&lt;a href=&quot;https://docker_practice.gitee.io&quot;&gt;https://docker_practice.gitee.io&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Jun 2018 00:00:00 +0800</pubDate>
+        <link>http://chenyqk.github.io/2018/06/docker/</link>
+        <guid isPermaLink="true">http://chenyqk.github.io/2018/06/docker/</guid>
+        
+        <category>docker</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>markdown 简介</title>
         <description>&lt;blockquote&gt;
   &lt;p&gt;Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— &lt;a href=&quot;https://zh.wikipedia.org/wiki/Markdown&quot;&gt;维基百科&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -90,10 +275,10 @@ Bob--&amp;gt;Alice: I am good thanks!
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 25 May 2017 00:00:00 +0800</pubDate>
-        <link>http://astroromance.github.io/2017/05/md/</link>
-        <guid isPermaLink="true">http://astroromance.github.io/2017/05/md/</guid>
+        <link>http://chenyqk.github.io/2017/05/md/</link>
+        <guid isPermaLink="true">http://chenyqk.github.io/2017/05/md/</guid>
         
-        <category>工具</category>
+        <category>markdown</category>
         
         
       </item>

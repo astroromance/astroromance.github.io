@@ -8,17 +8,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>文章</title>
-  <meta name="description" content="实验室饮水机核心管理员">
+  <title>ubuntu 下 docker 实践</title>
+  <meta name="description" content="docker 安装">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="文章">
-  <meta name="twitter:description" content="实验室饮水机核心管理员">
+  <meta name="twitter:title" content="ubuntu 下 docker 实践">
+  <meta name="twitter:description" content="docker 安装">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="文章">
-  <meta property="og:description" content="实验室饮水机核心管理员">
+  <meta property="og:title" content="ubuntu 下 docker 实践">
+  <meta property="og:description" content="docker 安装">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://chenyqk.github.io/archive/">
+  <link rel="canonical" href="http://chenyqk.github.io/2018/06/docker/">
   <link rel="alternate" type="application/rss+xml" title="Qing" href="http://chenyqk.github.io/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -169,124 +169,83 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
+    <h1 class="post-title">ubuntu 下 docker 实践</h1>
     <div class="post-meta">
-      <time datetime="" itemprop="datePublished" class="post-meta__date date"></time>
-      <span class="post-meta__tags tags"></span>
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2018-06-17 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-06-17</time>  
+         
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
     </div>
-    <h1 class="post-title">文章</h1>
   </header>
 
   <section class="post">
-    
+    <h3 id="docker-">docker 安装</h3>
+
+<p><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository">https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository</a></p>
+
+<p>跟着教程一步步走就行了，没踩什么坑</p>
+
+<h3 id="section">更换国内镜像</h3>
+
+<p>为了永久性保留更改，您可以修改（新建） /etc/docker/daemon.json 文件并添加上 registry-mirrors 键值。</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nt">"registry-mirrors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"https://hub-mirror.c.163.com"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>最后记得重启服务：</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">service docker restart</code></pre></figure>
+
+<h3 id="section-1">常用语句收集</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 搜索镜像</span>
+docker search &lt;image&gt; <span class="c"># 在docker index中搜索image</span>
+<span class="c"># 下载镜像</span>
+docker pull &lt;image&gt;  <span class="c"># 从docker registry server 中下拉image</span>
+<span class="c"># 查看镜像 </span>
+docker images： <span class="c"># 列出images</span>
+docker images -a <span class="c"># 列出所有的images（包含历史）</span>
+docker rmi  &lt;image ID&gt;： <span class="c"># 删除一个或多个image</span>
+docker image rm  &lt;image&gt;： <span class="c"># 删除一个或多个image&lt;image&gt;可以是镜像ID，镜像名</span>
+<span class="c"># 使用镜像创建容器</span>
+docker run -i -t sauloal/ubuntu14.04
+docker run -i -t sauloal/ubuntu14.04 /bin/bash <span class="c"># 创建一个容器，让其中运行 bash 应用，退出后容器关闭</span>
+docker run -itd --name centos_aways --restart<span class="o">=</span>always centos <span class="c">#创建一个名称centos_aways的容器，自动重启</span>
+<span class="c"># --restart参数：always始终重启；on-failure退出状态非0时重启；默认为，no不重启</span>
+<span class="c"># 查看容器</span>
+docker ps ：列出当前所有正在运行的container
+docker ps -l ：列出最近一次启动的container
+docker ps -a ：列出所有的container（包含历史，即运行过的container）
+docker ps -q ：列出最近一次运行的container ID
+<span class="c"># 再次启动容器</span>
+docker start/stop/restart &lt;container&gt; <span class="c">#：开启/停止/重启container</span>
+docker start <span class="o">[</span>container_id] <span class="c">#：再次运行某个container （包括历史container）</span>
+<span class="c">#进入正在运行的docker容器</span>
+docker <span class="nb">exec</span> -it <span class="o">[</span>container_id] /bin/bash
+docker run -i -t -p &lt;host_port:contain_port&gt; <span class="c">#：映射 HOST 端口到容器，方便外部访问容器内服务，host_port 可以省略，省略表示把 container_port 映射到一个动态端口。</span>
+<span class="c"># 删除容器</span>
+docker rm &lt;container...&gt; <span class="c">#：删除一个或多个container</span>
+docker rm <span class="sb">`</span>docker ps -a -q<span class="sb">`</span> <span class="c">#：删除所有的container</span>
+docker ps -a -q | xargs docker rm <span class="c">#：同上, 删除所有的container</span></code></pre></figure>
+
+<h3 id="dockerfile">利用Dockerfile定制镜像</h3>
+
+<p>DockerFile其实是一个脚本，可以用于定制自己需要的镜像</p>
+
+<p>一个小例子：<a href="https://github.com/BVLC/caffe/blob/master/docker/cpu/Dockerfile">https://github.com/BVLC/caffe/blob/master/docker/cpu/Dockerfile</a></p>
+
+<p>完成DockerFile编写之后，在Dockerfile文件夹下执行以下指令即可完成操作：</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker build -t &lt;image_name&gt; .</code></pre></figure>
+
+<p>在线文档一份：<a href="https://docker_practice.gitee.io">https://docker_practice.gitee.io</a></p>
 
 
-<div class="page card">
-
-
-
-  
-    
-    
-    
-    
-  
-    
-    
-    
-      <div class="hat_title">
-        <h3>2018</h3>
-      </div>
-      <div class="post_list">
-      <ul>
-      
-    
-  
-    <li>
-      <span>
-        2018-06-17
-      </span>
-       &raquo; 
-      <a href="/2018/06/protobuf/">protobuf 实践</a>
-    </li>
- 
-    
-          
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li>
-      <span>
-        2018-06-17
-      </span>
-       &raquo; 
-      <a href="/2018/06/cmake/">cmake 实践</a>
-    </li>
- 
-    
-          
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li>
-      <span>
-        2018-06-17
-      </span>
-       &raquo; 
-      <a href="/2018/06/docker/">ubuntu 下 docker 实践</a>
-    </li>
- 
-    
-      
-        </ul>
-         </div>         
-         
-        <div class="hat_title">
-         <h3> 2017</h3>
-        </div>
-        <div class="post_list">
-        <ul>
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li>
-      <span>
-        2017-05-25
-      </span>
-       &raquo; 
-      <a href="/2017/05/md/">markdown 简介</a>
-    </li>
- 
-    
-      </ul>
-      
-    
-  
-
-</div>
-</div>
   </section>
 </article>
+
 
             <section class="footer">
     <footer>
