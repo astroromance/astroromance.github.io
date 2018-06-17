@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Qing</title>
-    <description>实验室饮水机核心管理员</description>
+    <description>Tencent-CDG-SPAer</description>
     <link>http://chenyqk.github.io/</link>
     <atom:link href="http://chenyqk.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 17 Jun 2018 15:38:19 +0800</pubDate>
-    <lastBuildDate>Sun, 17 Jun 2018 15:38:19 +0800</lastBuildDate>
+    <pubDate>Sun, 17 Jun 2018 15:57:36 +0800</pubDate>
+    <lastBuildDate>Sun, 17 Jun 2018 15:57:36 +0800</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
     
       <item>
@@ -190,6 +190,8 @@ docker ps -a -q | xargs docker rm &lt;span class=&quot;c&quot;&gt;#：同上, �
         <guid isPermaLink="true">http://chenyqk.github.io/2018/06/docker/</guid>
         
         <category>docker</category>
+        
+        <category>ubuntu</category>
         
         
       </item>
