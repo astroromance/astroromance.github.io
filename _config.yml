@@ -33,7 +33,11 @@ ga:
 
 permalink: /:year/:month/:title/
 # Format
+<<<<<<< HEAD
 highlighter: rouge
+=======
+highlighter: pygments
+>>>>>>> d9583416400b36cad6f1d512067d3c67039b3b20
 markdown: kramdown  # [ maruku | rdiscount | kramdown | redcarpet ]
 kramdown:
   input:         GFM
