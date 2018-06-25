@@ -34,10 +34,6 @@ ga:
 permalink: /:year/:month/:title/
 # Format
 highlighter: rouge
-markdown: kramdown  # [ maruku | rdiscount | kramdown | redcarpet ]
-kramdown:
-  input:         GFM
-  auto_ids:      true
 
 textColor: #FF0000
 
