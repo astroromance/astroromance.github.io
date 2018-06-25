@@ -2,7 +2,7 @@
 
 /* Tomorrow Comment */
 .hljs-comment {
-  color: #8e908c;
+  color: #608B4E;
 }
 
 /* Tomorrow Red */
@@ -76,7 +76,7 @@
   display: block;
   overflow-x: auto;
   /*background: white;*/
-  color: #4d4d4c;
+  color: #5fbfdce0;
   padding: 0.5em;
   -webkit-text-size-adjust: none;
 }
